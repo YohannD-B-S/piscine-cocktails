@@ -1,0 +1,26 @@
+{% include 'partials/_header.twig'%}
+
+
+<main class="main">
+    <h1 class="main-title">Le meilleur cocktail !</h1>
+
+    <div class="cocktail-list-container">
+        {% if bestCocktail is not null %}
+            <article class="cocktail">
+                <h2>{{ bestCocktail.nom }}</h2>
+                <img class="cocktail-image" src="{{ bestCocktail.image }}" alt="{{ bestCocktail.nom }}" />
+                <p>{{ bestCocktail.description }}</p>
+                <p>Ingrédients :</p>
+
+                <ul>
+                    {% for ingredient in bestCocktail.ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+                <p>Publié le : {{ bestCocktail.date_creation }}</p>
+            </article>
+        {% else %}
+            <p>Aucun cocktail disponible.</p>
+        {% endif %}
+    </div>
+</main>
