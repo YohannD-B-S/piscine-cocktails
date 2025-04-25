@@ -7,9 +7,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeCocktailController  extends AbstractController{
 
-
-
-   
     public function TableCocktail(){
 
         $cocktails = [
