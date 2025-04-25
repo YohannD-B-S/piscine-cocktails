@@ -10,7 +10,7 @@
 
 			{% for cocktail in cocktails %}
 
-				<article class="cocktail">
+				<a href= "{{ path('best_cocktails', {'id':cocktail.id}) }}"><article class="cocktail">
 
 					<h2>{{cocktail.nom}}</h2>
                     <img class="cocktail-image" src="{{cocktail.image}}" alt="{{cocktail.nom}}" />
@@ -27,7 +27,7 @@
 
 					</ul>
                 <p>Publié le : {{cocktail.date_creation}}</p>
-				</article>
+				</article></a>
 
 			{% endfor %}
 		</div>

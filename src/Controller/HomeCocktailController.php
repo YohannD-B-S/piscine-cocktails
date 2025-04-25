@@ -9,14 +9,14 @@ class HomeCocktailController  extends AbstractController{
 
 
 
-    #[Route('/', name: 'home')]
-    public function lastCocktail(){
+   
+    public function TableCocktail(){
 
         $cocktails = [
             1 => [
                 'id'            => 1,
                 'nom'           => 'Mojito',
-                'image'         => 'https://images.unsplash.com/photo-1581404917879-42eeb2e57f0d', // photo libre de droits
+                'image'         => 'https://media.istockphoto.com/id/1212172937/fr/photo/deux-mojitos-frais-et-froids-avec-des-gla%C3%A7ons-des-tranches-de-lime-et-des-feuilles-de-menthe.jpg?s=612x612&w=0&k=20&c=JHjZDYgroHt-hdGpG_fXRmyQuU2r-xJ1VtEL5Dcbn10=', // photo libre de droits
                 'ingredients'   => [
                     '50 ml de rhum blanc',
                     '½ citron vert (en quartiers)',
@@ -32,7 +32,7 @@ class HomeCocktailController  extends AbstractController{
             2 => [
                 'id'            => 2,
                 'nom'           => 'Margarita',
-                'image'         => 'https://images.unsplash.com/photo-1564758567405-87dfa5f9f90e',
+                'image'         => 'https://t4.ftcdn.net/jpg/12/42/30/11/360_F_1242301142_mCkI4DL69H5gUbgeCRpCB8QZrujzWsEq.jpg',
                 'ingredients'   => [
                     '50 ml de tequila',
                     '25 ml de triple sec (Cointreau)',
@@ -47,7 +47,7 @@ class HomeCocktailController  extends AbstractController{
             3 => [
                 'id'            => 3,
                 'nom'           => 'Old Fashioned',
-                'image'         => 'https://images.unsplash.com/photo-1570528738765-1fd6e623c470',
+                'image'         => 'https://www.foodandwine.com/thmb/hFWA9xk2wUk0mDHP6n_-17I1r-o=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Junes-Old-Fashioned-FT-BLOG1222-8a001cc392394c6893a3259ecab1369c.jpg',
                 'ingredients'   => [
                     '60 ml de bourbon ou rye whisky',
                     '1 morceau de sucre',
@@ -76,7 +76,7 @@ class HomeCocktailController  extends AbstractController{
             5 => [
                 'id'            => 5,
                 'nom'           => 'Negroni',
-                'image'         => 'https://images.unsplash.com/photo-1583781922630-e461fa27535c',
+                'image'         => 'https://www.laboutiqueducocktail.com/wp-content/uploads/2023/07/Negroni.jpeg',
                 'ingredients'   => [
                     '30 ml de gin',
                     '30 ml de vermouth rouge',
@@ -88,16 +88,37 @@ class HomeCocktailController  extends AbstractController{
                 'description'   => 'Amertume élégante et notes d’agrumes pour ce grand classique italien.'
             ],
         ];
-
-        $lastCocktail=array_slice($cocktails,-2,2,true);
-
-
-
-
-
-
+        return $cocktails;
+    }
+    #[Route('/', name: 'home')]
+    public function lastCocktail(){
+        $lastCocktail=$this->TableCocktail();
+        $lastCocktail = array_slice($lastCocktail, -2, 2, true); // Récupérer le dernier cocktail de la liste
+        
         return $this->render('home.html.twig', [
             'cocktails' => $lastCocktail,
+               
         ]);
+    }
+
+    #[Route('/cocktails', name : 'list_cocktails')]
+    public function listCocktails(){
+
+        $cocktails = $this->TableCocktail();
+        return $this->render('list_cocktails.html.twig', [
+            'cocktails' => $cocktails,
+        ]);
+    }
+
+    #[Route('/best_cocktails/{id}', name: 'best_cocktails')]
+public function BestCocktail($id){
+
+    $cocktails = $this->TableCocktail();
+    $bestCocktail = $cocktails[$id] ?? null; // Récupérer le cocktail avec l'ID 3 (Old Fashioned)
+    return $this->render('best_cocktail.html.twig',[
+        'bestCocktail' => $bestCocktail
+
+    ]);
+
     }
 }
