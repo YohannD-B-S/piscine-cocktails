@@ -10,22 +10,14 @@
 
 			{% for cocktail in cocktails %}
 
-				<a href= "{{ path('best_cocktails', {'id':cocktail.id}) }}"><article class="cocktail">
+			<!-- Cette ligne crée un lien hypertexte vers la route définie par la fonction 'path'. La fonction 'path' génère automatiquement une URL vers la route nommée 'best_cocktails', avec un paramètre nommé 'id' dont la valeur provient de l'objet 'cocktail'. 
+Ce lien est encapsulé dans un élément <article> avec la classe CSS 'cocktail', permettant de styliser le contenu lié à un cocktail spécifique. -->
+<a href= "{{ path('best_cocktails', {'id':cocktail.id}) }}"><article class="cocktail">
 
 					<h2>{{cocktail.nom}}</h2>
                     <img class="cocktail-image" src="{{cocktail.image}}" alt="{{cocktail.nom}}" />
 					<p>{{cocktail.description}} </p>
 					<p>Ingrédients :</p>
-
-					<ul>
-
-						{% for ingredient in cocktail.ingredients %}
-
-							<li>{{ingredient}}</li>
-
-						{% endfor %}
-
-					</ul>
                 <p>Publié le : {{cocktail.date_creation}}</p>
 				</article></a>
 

@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeCocktailController  extends AbstractController{
+class CocktailController  extends AbstractController{
 
     public function TableCocktail(){
 
@@ -94,10 +94,10 @@ class HomeCocktailController  extends AbstractController{
         
         return $this->render('home.html.twig', [
             'cocktails' => $lastCocktail,
-               
         ]);
     }
 
+    
     #[Route('/cocktails', name : 'list_cocktails')]
     public function listCocktails(){
 
@@ -107,15 +107,28 @@ class HomeCocktailController  extends AbstractController{
         ]);
     }
 
-    #[Route('/best_cocktails/{id}', name: 'best_cocktails')]
-public function BestCocktail($id){
+    #[Route('/best_cocktails', name: 'best_cocktails')]
+    // Route pour la page des meilleurs cocktails
+    
+public function BestCocktail(){
+    // Récupérer la liste des cocktails
 
-    $cocktails = $this->TableCocktail();
-    $bestCocktail = $cocktails[$id] ?? null; // Récupérer le cocktail avec l'ID 3 (Old Fashioned)
+    $cocktailId = $_GET['id'] ?? null;
+     // Récupérer l'id du cocktail depuis l'URL
+
+    $bestCocktail = $this->TableCocktail()[$cocktailId];
+    // Récupérer le cocktail correspondant à l'id
+    // Si l'id n'est pas valide, rediriger vers la liste des cocktails
+
     return $this->render('best_cocktail.html.twig',[
+        // Passer le cocktail à la vue
         'bestCocktail' => $bestCocktail
+        
 
     ]);
 
+
     }
+
+    
 }
