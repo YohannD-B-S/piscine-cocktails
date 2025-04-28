@@ -107,13 +107,23 @@ class CocktailController  extends AbstractController{
         ]);
     }
 
-    #[Route('/best_cocktails/{id}', name: 'best_cocktails')]
-public function BestCocktail($id){
 
+// Route pour afficher un cocktail spécifique en utilisant son ID
+
+    #[Route('/best_cocktails/{id}', name: 'best_cocktails')]
+    // Le paramètre {id} est dynamique et sera passé à la méthode BestCocktail
+    // Le nom de la route est 'best_cocktails'
+public function BestCocktail($id){
+    // On appelle la méthode TableCocktail pour récupérer la liste des cocktails
+    // On utilise l'ID passé dans l'URL pour récupérer le cocktail correspondant
     $cocktails = $this->TableCocktail();
     $bestCocktail = $cocktails[$id] ?? null; // Récupéré les cocktails via l'id
+    // Si l'ID n'existe pas, on renvoie null
+    // On vérifie si le cocktail existe, sinon on peut gérer l'erreur (rediriger ou afficher un message d'erreur 404)
     return $this->render('best_cocktail.html.twig',[
         'bestCocktail' => $bestCocktail
+        // On passe le cocktail à la vue pour l'afficher
+        // On utilise la méthode render pour afficher le template best_cocktail.html.twig
 
     ]);
 
