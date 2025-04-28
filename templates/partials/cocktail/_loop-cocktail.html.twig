@@ -1,0 +1,20 @@
+
+<div class="cocktail-list-container">
+
+{% for cocktail in cocktails %}
+
+<a href= "{{ path('best_cocktails', {'id':cocktail.id}) }}"><article class="cocktail">
+
+        <h2>{{cocktail.nom}}</h2>
+        <div><img class="cocktail-image" src="{{cocktail.image}}" alt="{{cocktail.nom}}" /></div>
+        <p>{{cocktail.description}} </p>
+        <p>Ingrédients :</p>
+
+        <ul>
+
+        </ul>
+    <p>Publié le : {{cocktail.date_creation}}</p>
+    </article>
+
+{% endfor %}
+</div>
