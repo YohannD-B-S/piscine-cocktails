@@ -1,10 +1,14 @@
-{% include 'partials/_header.twig'%}
+{% extends 'base.html.twig'%}
 
+{% block main %}
 
 <main class="main">
 
-		<h1 class="main-title">Les deux derniers cocktails </h1>
+	<h1 class="main-title">Les deux derniers cocktails </h1>
 
-		{% include 'partials/cocktail/_loop-cocktail.html.twig' %}
+	{% include 'partials/cocktail/_loop-cocktail.html.twig' %}
 
-	</main>
+</main>
+
+
+{% endblock main %}
