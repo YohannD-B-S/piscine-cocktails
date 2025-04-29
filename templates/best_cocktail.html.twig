@@ -1,7 +1,7 @@
 {% extends 'base.html.twig'%}
 
 {% block metatitle %} 
-    {{bestCocktail.nom}}
+    {{cocktail.nom}}
 {% endblock metatitle %}
 
 {% block main %}
@@ -14,17 +14,17 @@
     <div class="cocktail-list-container">
       
             <article class="cocktail">
-                <h2>{{ bestCocktail.nom }}</h2>
-                <img class="cocktail-image" src="{{ bestCocktail.image }}" alt="{{ bestCocktail.nom }}" />
-                <p>{{ bestCocktail.description }}</p>
+                <h2>{{ cocktail.nom }}</h2>
+                <img class="cocktail-image" src="{{ cocktail.image }}" alt="{{ cocktail.nom }}" />
+                <p>{{ cocktail.description }}</p>
                 <p>Ingrédients :</p>
 
                 <ul>
-                    {% for ingredient in bestCocktail.ingredients %}
+                    {% for ingredient in cocktail.ingredients %}
                         <li>{{ ingredient }}</li>
                     {% endfor %}
                 </ul>
-                <p>Publié le : {{ bestCocktail.date_creation }}</p>
+                <p>Publié le : {{ cocktail.date_creation }}</p>
             </article>
     </div>
 </main>

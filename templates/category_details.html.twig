@@ -1,0 +1,22 @@
+
+{% extends 'base.html.twig'%}
+
+{% block metatitle %} 
+    {{category.nom}}
+{% endblock metatitle %}
+
+{% block main %}
+
+
+        <article class="cocktail category-card">
+            <h3 class="category-title">{{ category.nom }}</h3>
+        <p>{{ category.description }}</p>
+        </article>
+
+
+                
+
+{% endblock main %}
+
+
+

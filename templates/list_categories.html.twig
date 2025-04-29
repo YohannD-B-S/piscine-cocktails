@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block metatitle %} 
+    Catégorie des cocktails
+{% endblock metatitle %}
+
+{% block main %}
+
+
+<h2 class="main-title">Catégories des cocktails</h2>
+
+
+    <div class="cocktail-list-container">
+
+        {% for categorie in categories %}
+
+            <article class="cocktail category-card">
+                <h3 class="category-title">{{ categorie.nom }}</h3>
+                
+                <a href= "{{ path('category-details', {'id':categorie.id}) }}">
+            </article>
+
+        {% endfor %}
+
+    </div>
+    
+{% endblock main %}
+
+
+
+
+
+
