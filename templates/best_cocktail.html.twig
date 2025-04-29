@@ -1,4 +1,9 @@
 {% extends 'base.html.twig'%}
+
+{% block metatitle %} 
+    {{bestCocktail.nom}}
+{% endblock metatitle %}
+
 {% block main %}
 <!--on étend le fichier de base.html.twig afin d'y inclure ses parametres qui sont des elements communs a toute les pages-->
 <!-- dans les parametres de la base, il y a le block. ici on y inclu le texte du main -->
