@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<h2 class="main-title">Catégories des cocktails</h2>
+
+<div class="categories-container">
+    {% for categorie in categories %}
+        <article class="cocktail category-card">
+            <h3 class="category-title">{{ categorie.nom }}</h3>
+            <p class="category-description">{{ categorie.description }}</p>
+        </article>
+    {% endfor %}
+</div>
+{% endblock main %}

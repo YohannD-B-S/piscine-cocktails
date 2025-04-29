@@ -87,6 +87,47 @@ class CocktailController  extends AbstractController{
         ];
         return $cocktails;
     }
+    public function getCocktailByCategory() {
+
+        $categories = [
+            1 => [
+                "id" => 1,
+                "nom" => "cocktail",
+                "description" => "cocktails classiques avec alcool"
+            ],
+            2 => [
+                "id" => 2,
+                "nom" => "mocktail",
+                "description" => "cocktails sans alcool"
+            ],
+            3 => [
+                "id" => 3,
+                "nom" => "shooter",
+                "description" => "moins de 25 cl"
+            ],
+            4 => [
+                "id" => 4,
+                "nom" => "cocktails soft",
+                "description" => "cocktails sans alcool fort"
+            ],
+        
+            
+        ];
+        return $categories;
+    }
+
+    #[Route('/categories', name: 'categories')]
+    public function categories(){
+        $categories = $this->getCocktailByCategory();
+        return $this->render('category_cocktail.html.twig', [
+            'categories' => $categories,
+
+            
+        ]);
+        
+    }
+
+
     #[Route('/', name: 'home')]
     public function lastCocktail(){
         $lastCocktail=$this->TableCocktail();
