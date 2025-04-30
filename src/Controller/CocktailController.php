@@ -6,6 +6,7 @@ use App\Entity\Cocktail;
 use App\Repository\CocktailCategoriesRepository;
 use App\Repository\CocktailsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CocktailController  extends AbstractController{
@@ -82,7 +83,21 @@ public function BestCocktail(CocktailsRepository $cocktailsRepository, $id){
 
     }
     #[Route('/create_cocktail', name: 'create-cocktail')]
-    public function createCocktail(){
+    public function createCocktail(Request $request){
+        // La méthode Request permet de récupérer les données envoyées par le formulaire
+        // La méthode isMethod vérifie si la requête est de type POST (envoi de données)
+
+        if($request-> isMethod('POST')){
+            $name=$request->request->get('name'); // Récupérer le nom du cocktail depuis le formulaire
+            $description=$request->request->get('description'); // Récupérer la description du cocktail depuis le formulaire
+            $ingredients=$request->request->get('ingredients'); // Récupérer les ingrédients du cocktail depuis le formulaire
+            $image=$request->request->get('image'); // Récupérer l'image du cocktail depuis le formulaire
+
+            $cocktail = new Cocktail($name, $description, $ingredients, $image);
+            //On crée une nouvelle instance de la classe Cocktail avec les données du formulaire
+
+            dump($cocktail);die; // Affiche les informations du cocktail créé
+        }
         return $this->render('create_cocktail.html.twig');
     }
 }
