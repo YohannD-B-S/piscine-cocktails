@@ -13,10 +13,10 @@ class CocktailController  extends AbstractController{
     #[Route('/categories', name: 'list-categories')]
     public function listCatgories(){
         $categorieRepository = new CocktailCategoriesRepository;
-        $categorie = $categorieRepository->findCategories();
+        $categories = $categorieRepository->findCategories();
 
         return $this->render('list_categories.html.twig', [
-            'category' => $categories,
+            'categories' => $categories,
 
             
         ]);
@@ -26,12 +26,10 @@ class CocktailController  extends AbstractController{
     #[Route('/categories/{id}', name: 'category-details')]
     public function categoryDetails($id){
         $categorieRepository = new CocktailCategoriesRepository;
-        $categories = $categorieRepository->findCategories();
-
-        $category = $categories[$id] ?? null; 
+        $categories = $categorieRepository->findCategoryById($id);
 
         return $this->render('category_details.html.twig',[
-            'category' => $category,
+            'category' => $categories,
         ]);
     }
     

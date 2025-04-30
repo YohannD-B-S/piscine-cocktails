@@ -30,4 +30,11 @@ class CocktailCategoriesRepository{
         ];
         return $categories;
     }
+
+    public function findCategoryById($id){
+    $categories = $this -> findCategories();
+    $categorie = $categories[$id];
+
+    return $categorie;
+}
 }
