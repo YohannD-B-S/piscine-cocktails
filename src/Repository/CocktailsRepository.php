@@ -83,4 +83,11 @@ class CocktailsRepository {
         return $cocktails;
     }
 
+    public function findOneById($id){
+        $cocktails= $this->findAll();
+        $cocktail = $cocktails[$id];
+
+        return $cocktail;
+    }
+
 }

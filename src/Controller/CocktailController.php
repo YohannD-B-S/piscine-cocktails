@@ -13,10 +13,10 @@ class CocktailController  extends AbstractController{
     #[Route('/categories', name: 'list-categories')]
     public function listCatgories(){
         $categorieRepository = new CocktailCategoriesRepository;
-        $categories = $categorieRepository->findCategories();
+        $categorie = $categorieRepository->findCategories();
 
         return $this->render('list_categories.html.twig', [
-            'categories' => $categories,
+            'category' => $categories,
 
             
         ]);
@@ -28,10 +28,10 @@ class CocktailController  extends AbstractController{
         $categorieRepository = new CocktailCategoriesRepository;
         $categories = $categorieRepository->findCategories();
 
-        $categories = $categories[$id] ?? null; 
+        $category = $categories[$id] ?? null; 
 
         return $this->render('category_details.html.twig',[
-            'categorie' => $categories,
+            'category' => $category,
         ]);
     }
     
@@ -71,9 +71,7 @@ class CocktailController  extends AbstractController{
 public function BestCocktail($id){
     
     $cocktailsRepository = new CocktailsRepository;
-    $cocktails = $cocktailsRepository->findAll(); // Récupérer tous les cocktails
-
-    $cocktail = $cocktails[$id]; // Récupérer le cocktail correspondant à l'ID
+    $cocktail = $cocktailsRepository->findOneById($id); // Récupérer tous les cocktails
 
     return $this->render('best_cocktail.html.twig', [
         'cocktail' => $cocktail, // Passer le cocktail à la vue)
