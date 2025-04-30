@@ -1,32 +1,27 @@
-{% extends 'base.html.twig'%}
+{% extends 'base.html.twig' %}
 
 {% block metatitle %} 
-    {{cocktail.nom}}
+    {{ cocktail.nom }}
 {% endblock metatitle %}
 
 {% block main %}
-<!--on étend le fichier de base.html.twig afin d'y inclure ses parametres qui sont des elements communs a toute les pages-->
-<!-- dans les parametres de la base, il y a le block. ici on y inclu le texte du main -->
-
 <main class="main">
     <h1 class="main-title">Le meilleur cocktail !</h1>
 
     <div class="cocktail-list-container">
-      
-            <article class="cocktail">
-                <h2>{{ cocktail.nom }}</h2>
-                <img class="cocktail-image" src="{{ cocktail.image }}" alt="{{ cocktail.nom }}" />
-                <p>{{ cocktail.description }}</p>
-                <p>Ingrédients :</p>
+        <article class="cocktail">
+            <h2 class="cocktail-title">{{ cocktail.nom }}</h2>
+            <img class="cocktail-image" src="{{ cocktail.image }}" alt="{{ cocktail.nom }}" />
+            <p class="cocktail-description">{{ cocktail.description }}</p>
+            <p class="cocktail-ingredients-title">Ingrédients :</p>
 
-                <ul>
-                    {% for ingredient in cocktail.ingredients %}
-                        <li>{{ ingredient }}</li>
-                    {% endfor %}
-                </ul>
-                <p>Publié le : {{ cocktail.date_creation }}</p>
-            </article>
+            <ul class="cocktail-ingredients-list">
+                {% for ingredient in cocktail.ingredients %}
+                    <li class="cocktail-ingredient-item">{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+            <p class="cocktail-date">Publié le : {{ cocktail.date_creation }}</p>
+        </article>
     </div>
 </main>
-
 {% endblock main %}

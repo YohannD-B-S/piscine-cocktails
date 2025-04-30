@@ -36,6 +36,13 @@
         </label>
     </form>
 
+    {% for message in app.flashes ('success')%}
+
+    <h2 class ="successAdd">{{ message }}</h2>
+
+    {% endfor %}
+
+
 
 
 

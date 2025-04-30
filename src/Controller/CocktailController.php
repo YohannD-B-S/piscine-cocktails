@@ -96,7 +96,8 @@ public function BestCocktail(CocktailsRepository $cocktailsRepository, $id){
             $cocktail = new Cocktail($name, $description, $ingredients, $image);
             //On crée une nouvelle instance de la classe Cocktail avec les données du formulaire
 
-            dump($cocktail);die; // Affiche les informations du cocktail créé
+            $this->addFlash('success', "Le cocktail " . $cocktail->name . "a bien été créé");
+            // On utilise la méthode addFlash pour afficher un message de succès à l'utilisateur
         }
         return $this->render('create_cocktail.html.twig');
     }
