@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Cocktail;
 use App\Repository\CocktailCategoriesRepository;
 use App\Repository\CocktailsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,10 +32,10 @@ class CocktailController  extends AbstractController{
         // et on l'injecte dans la méthode listCategories
         // on ajout $id pour récupérer l'id de la catégorie
        
-        $categories = $categorieRepository->findCategoryById($id);
+        $category = $categorieRepository->findCategoryById($id);
 
         return $this->render('category_details.html.twig',[
-            'category' => $categories,
+            'category' => $category,
         ]);
     }
     
@@ -79,6 +80,17 @@ public function BestCocktail(CocktailsRepository $cocktailsRepository, $id){
     ]);
 
 
+    }
+    #[Route('/create-cocktail', name: 'create-cocktail')]
+    public function createCocktail(){
+        $name='Gin Tonic';
+        $ingredients=['gin', 'tonic', 'citron'];
+        $description='Un cocktail rafraîchissant à base de gin et de tonic.';
+        $image="https://www.villaschweppes.com/app/uploads/2014/12/24649-l-experience-gin-tonic-orig-2.jpg";
+
+        $cocktail = new Cocktail($name,$ingredients, $description,  $image);
+
+        dd($cocktail); // Affiche les détails du cocktail créé
     }
 }
 
