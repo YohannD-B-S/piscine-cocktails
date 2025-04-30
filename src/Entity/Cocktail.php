@@ -20,7 +20,7 @@ class Cocktail{
 
         $this->createdAt = new \DateTime();
         $this->ispublished = true;
-        
+
         $this->id = 5;
     }
 }

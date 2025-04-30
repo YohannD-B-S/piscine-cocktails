@@ -81,16 +81,9 @@ public function BestCocktail(CocktailsRepository $cocktailsRepository, $id){
 
 
     }
-    #[Route('/create-cocktail', name: 'create-cocktail')]
+    #[Route('/create_cocktail', name: 'create-cocktail')]
     public function createCocktail(){
-        $name='Gin Tonic';
-        $ingredients=['gin', 'tonic', 'citron'];
-        $description='Un cocktail rafraîchissant à base de gin et de tonic.';
-        $image="https://www.villaschweppes.com/app/uploads/2014/12/24649-l-experience-gin-tonic-orig-2.jpg";
-
-        $cocktail = new Cocktail($name,$ingredients, $description,  $image);
-
-        dd($cocktail); // Affiche les détails du cocktail créé
+        return $this->render('create_cocktail.html.twig');
     }
 }
 

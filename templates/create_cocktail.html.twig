@@ -1,0 +1,44 @@
+{% extends 'base.html.twig'%}
+
+{% block metatitle %} 
+    Creation de cocktail
+{% endblock metatitle %}
+
+{% block main %}
+
+<h2>Créer un cocktail</h2>
+
+<h2>Créer un cocktail</h2>
+
+    <form method="post">
+        <label>Nom du cocktail
+        <input type="text" name="name" placeholder="Nom du cocktail">
+        </label>
+
+        <label>Description
+        <input type="text" name="description" placeholder="Description du cocktail">
+        </label>
+
+
+        <label>Ingrédients
+        <textarea name="ingredients" placeholder="Ingrédients du cocktail"></textarea>
+        </label>
+
+
+        <label>Date de création
+        <input type="text" name="createDate" placeholder="YYYY-MM-DD">
+        </label>
+
+        <label>Image
+        <input type="text" name="image" placeholder="URL de l'image">
+        </label>
+
+        <label>
+        <input type="submit" value="Créer le cocktail" placeholder="Créer le cocktail">
+        </label>
+    </form>
+
+
+
+
+{% endblock main %}
