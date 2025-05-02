@@ -8,6 +8,15 @@
 
 <h2>Créer un cocktail</h2>
 
+    {% for message in app.flashes ('success')%}
+
+<h2 class ="successAdd">{{ message }}</h2>
+
+    {% endfor %}
+
+
+
+
     <form method="post">
         <label>Nom du cocktail
         <input type="text" name="name" placeholder="Nom du cocktail">
@@ -35,13 +44,6 @@
         <input type="submit" value="Créer le cocktail" placeholder="Créer le cocktail">
         </label>
     </form>
-
-    {% for message in app.flashes ('success')%}
-
-    <h2 class ="successAdd">{{ message }}</h2>
-
-    {% endfor %}
-
 
 
 
