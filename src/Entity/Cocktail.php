@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use Doctrine \ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping as ORM;
 //j'uttilise Doctrine ORM pour gerer mon entité
 
 
 
 
-#[ORM\Entity]
+#[ORM\Entity()]
 //Je cree une entité pour la class Cocktail
 class Cocktail{
 
@@ -18,7 +18,7 @@ class Cocktail{
     //Je genere un id automatiquement
     #[ORM\Column]
     //Je cree une colonne pour mon id
-    public ?init $id;
+    public ?int $id;
     //je cees une variable id de type int
 
     #[ORM\Column(length: 255)]
@@ -44,7 +44,7 @@ class Cocktail{
 
     #[ORM\Column]
     //Je cree une colonne pour ma date de création de cocktail
-    public DateTime $createdAt;
+    public \DateTime $createdAt;
     //Je cree une variable createdAt de type DateTime(Variable de type date)
 
     #[ORM\Column]
@@ -60,8 +60,8 @@ class Cocktail{
         $this->image = $image;
 
         $this->createdAt = new \DateTime();
+
         $this->ispublished = true;
 
-        $this->id = 5;
     }
 }
